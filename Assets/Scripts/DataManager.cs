@@ -9,7 +9,7 @@ public class DataManager : MonoBehaviour
 
     public string playerName;
     public string bestScoreName;
-    public int score;
+    public int bestScore;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class DataManager : MonoBehaviour
     {
         public string playerName;
         public string bestScoreName;
-        public int score;
+        public int bestScore;
     }
 
     public void SaveInfo()
@@ -37,7 +37,7 @@ public class DataManager : MonoBehaviour
 
         data.playerName = playerName;
         data.bestScoreName = bestScoreName;
-        data.score = score;
+        data.bestScore = bestScore;
 
         string json = JsonUtility.ToJson(data);
 
@@ -47,6 +47,7 @@ public class DataManager : MonoBehaviour
     public void LoadInfo()
     {
         string path = Application.persistentDataPath + "/savefile.json";
+        Debug.Log(path);
 
         if (File.Exists(path))
         {
@@ -55,7 +56,7 @@ public class DataManager : MonoBehaviour
 
             playerName = data.playerName;
             bestScoreName = data.bestScoreName;
-            score = data.score;
+            bestScore = data.bestScore;
         }
     } 
 }

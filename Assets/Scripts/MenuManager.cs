@@ -7,12 +7,17 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField playerName;
+    [SerializeField] private TMP_InputField playerNameInput;
+    [SerializeField] private TMP_Text bestScoreText;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        DataManager.instance.LoadInfo();
 
+        string bestScoreName = DataManager.instance.bestScoreName == "" ? "Name" : DataManager.instance.bestScoreName;
+        bestScoreText.text = "Best Score: " + bestScoreName + ": " + DataManager.instance.bestScore;
     }
 
     // Update is called once per frame
@@ -23,13 +28,16 @@ public class MenuManager : MonoBehaviour
 
     public void GetPlayerName()
     {
-        DataManager.instance.playerName = playerName.text;
+        DataManager.instance.playerName = playerNameInput.text;
     }
 
     public void StartGame()
     {
-        if (playerName.text != "")
+        if (playerNameInput.text != "")
+        {
+            GetPlayerName();
             SceneManager.LoadScene(1);
+        }
     }
 
     public static void ExitGame()
