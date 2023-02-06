@@ -32,8 +32,9 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene(1);
     }
 
-    public void ExitGame()
+    public static void ExitGame()
     {
+
 #if (UNITY_EDITOR)
         EditorApplication.ExitPlaymode();
 #else

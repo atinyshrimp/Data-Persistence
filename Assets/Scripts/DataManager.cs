@@ -23,6 +23,7 @@ public class DataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    [System.Serializable]
     class SaveData
     {
         public string playerName;
